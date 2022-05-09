@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Crie um grupo{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 form-div">
+        <h1>Crie um novo grupo</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-9 mb-3">
+                    {{ form.titulo|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 mb-3">
+                    {{ form.descricao|as_crispy_field }}
+                </div>
+            </div>
+            
+            <input type="submit" class="btn-custom" value="Criar Grupo"> 
+        </form>
+    </div>   
+{% endblock %}

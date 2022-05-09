@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Contatos{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Lista de Contatos</h1>
+
+        <div class="col-8 div-consultar">
+            <input class="form-control" type="text" id="consulta" name="consulta" placeholder="Digite o nome do contato para buscar">
+        </div>
+        <div class="col-3 div-buscar">
+            <input type="submit" class="btn-custom" value="Buscar">
+        </div>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</if>
+                {% endfor %}
+            </ul>
+        {% endif%}
+
+        <ul class="listar-contatos">
+            {% for contato in contatos %}
+            <li class="item-contatos">
+                <span>{{contato.nome}}</span>
+                <a href="/delete/{{contato.id}}"><span><i class="fas fa-trash"></i></span></a>
+                <a href="/edit/{{contato.id}}"><span><i class="fas fa-edit"></i></span></a>
+                <a href="/retrieve/{{contato.id}}"><span><i class="fas fa-plus"></i></span></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

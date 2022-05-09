@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Adicione um contato{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 form-div">
+        <h1>Adicione um novo contato</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.nome|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.email|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.telefone|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.grupo|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    {{ form.endereco|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    {{ form.numero|as_crispy_field }}
+                </div>
+                <div class="col-md-3 mb-3">
+                    {{ form.cep|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.bairro|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.cidade|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.estado|as_crispy_field }}
+                </div>
+            </div>
+            <input type="submit" class="btn-custom" value="Criar Contato"> 
+        </form>
+    </div>   
+{% endblock %}

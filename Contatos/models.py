@@ -4,8 +4,8 @@ from django.db import models
 class Grupo(models.Model):
     titulo = models.CharField(max_length=120)
     descricao = models.TextField()
-    create_data = models.DateTimeField(auto_now_add=True)
-    update_data = models.DateTimeField(auto_now=True)
+    create_data = models.DateField(auto_now_add=True)
+    update_data = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.titulo
@@ -21,8 +21,8 @@ class Contato(models.Model):
     cidade = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
     grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
-    create_data = models.DateTimeField(auto_now_add=True)
-    update_data = models.DateTimeField(auto_now=True)
+    create_data = models.DateField(auto_now_add=True)
+    update_data = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.nome

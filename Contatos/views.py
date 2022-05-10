@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
@@ -9,7 +10,19 @@ from .models import *
 
 # Contatos
 def listarContatos(request):
-    contatos = Contato.objects.all().order_by('-create_data')
+    busca = request.GET.get('consulta')
+
+    if busca:
+        contatos = Contato.objects.filter(nome__icontains=busca)
+    else:
+        lista_contatos = Contato.objects.all().order_by('-create_data')
+
+        paginator = Paginator(lista_contatos, 5)
+
+        page = request.GET.get('page')
+
+        contatos = paginator.get_page(page)
+
     return render(request, 'contatos/list.html', {'contatos': contatos})
 
 def verContato(request, id):

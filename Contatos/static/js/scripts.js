@@ -25,7 +25,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         var delLink = $(this).attr('href');
-        var resultado = confirm('Quer deletar este contato?');
+        var resultado = confirm('Quer deletar este item?');
 
         if (resultado) {
             window.location.href = delLink;

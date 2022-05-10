@@ -69,6 +69,13 @@ input[type='submit']:hover,
     margin-bottom: 0.5em;
 }
 
+.form-div .fas.fas.fa-user-group {
+    cursor: pointer;
+    margin: auto;
+    font-size: 40px;
+    float: right;
+}
+
 /* Consultar */
 .div-buscar {
     display: inline-block;
@@ -119,18 +126,18 @@ input[type='submit']:hover,
     font-size: 30px;
 }
 
-.listar-contatos {
+.listar-contatos, .listar-grupos {
     padding-left: 0;
     list-style: none;
 }
 
-.item-contatos {
+.item-contatos, .item-grupos {
     font-size: 20px;
     padding: 12px;
     border-bottom: 1px solid #F6982D;
 }
 
-.item-contatos span {
+.item-contatos span, .item-grupos span {
     font-weight: bold;
     color: #F6982D;
     margin-right: 2em;

@@ -73,6 +73,26 @@ def deletarContato(request, id):
     return redirect('/')
 
 # Grupos
+def listarGrupos(request):
+    busca = request.GET.get('consulta')
+
+    if busca:
+        grupos = Grupo.objects.filter(titulo__icontains=busca)
+    else:
+        lista_grupos = Grupo.objects.all().order_by('-create_data')
+
+        paginator = Paginator(lista_grupos, 3)
+
+        page = request.GET.get('page')
+
+        grupos = paginator.get_page(page)
+
+    return render(request, 'grupos/list.html', {'grupos': grupos})
+
+def verGrupo(request, id):
+    grupo = get_object_or_404(Grupo, pk=id)
+    return render(request, 'grupos/retrieve.html', {'grupo': grupo})
+
 def criarGrupo(request):
     if request.method == 'POST':
         form = formularioGrupo(request.POST)
@@ -83,8 +103,35 @@ def criarGrupo(request):
 
             messages.success(request, 'Grupo criado com sucesso.')
 
-            return redirect('/')
+            return redirect('/groups')
 
     else:
         form = formularioGrupo()
         return render(request, 'grupos/create.html', {'form': form})
+
+def editarGrupo(request, id):
+    grupo = get_object_or_404(Grupo, pk=id)
+    form = formularioGrupo(instance=grupo)
+
+    if request.method == 'POST':
+        form = formularioGrupo(request.POST, instance=grupo)
+
+        if form.is_valid():
+            grupo.save()
+
+            messages.success(request, 'Grupo atualizado com sucesso.')
+
+            return redirect('/groups/')
+        else:
+            return render(request, 'grupos/edit.html', {'form': form, 'grupo': grupo})
+
+    else:
+        return render(request, 'grupos/edit.html', {'form': form, 'grupo': grupo})
+
+def deletarGrupo(request, id):
+    grupo = get_object_or_404(Grupo, pk=id)
+    grupo.delete()
+
+    messages.info(request, 'Grupo deletado com sucesso.')
+
+    return redirect('/groups/')

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Grupo{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <div class="row">
+            <div class="col-auto m-0 align-items">
+                <span><i class="fas fa-user-group"></i></span>
+            </div>
+            <div class="col-auto m-0 p-0 align-items">
+                <h3>{{grupo.titulo}}</h3>
+            </div>
+        </div>
+        
+        <p>{{grupo.descricao}}</p>
+
+        <div class="row">
+            <div class="col-auto m-0 align-items">
+                <span><i class="fas fa-calendar-days"></i></span>
+            </div>
+            <div class="col-auto m-0 p-0 align-items">
+                <p>{{grupo.create_data}}</p>
+            </div>
+        </div>
+            
+    </div>
+{% endblock %}

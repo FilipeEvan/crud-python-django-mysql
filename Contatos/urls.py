@@ -10,5 +10,10 @@ urlpatterns = [
     path('delete/<int:id>', views.deletarContato, name='deletar-contato'),
 
     # Grupos
+    path('groups/', views.listarGrupos, name='listar-grupos'),
+    path('groups/retrieve/<int:id>', views.verGrupo, name='ver-grupo'),
     path('groups/create/', views.criarGrupo, name='criar-grupo'),
+    path('groups/edit/<int:id>', views.editarGrupo, name='editar-grupo'),
+    path('groups/delete/<int:id>', views.deletarGrupo, name='deletar-grupo'),
+    
 ]

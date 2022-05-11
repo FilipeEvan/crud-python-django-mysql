@@ -15,7 +15,8 @@ def listarContatos(request):
     if busca:
         contatos = Contato.objects.filter(nome__icontains=busca)
     else:
-        lista_contatos = Contato.objects.all().order_by('-create_data')
+        lista_contatos = Contato.objects.all().order_by('nome')
+        # lista_contatos = Contato.objects.all().order_by('-create_data')
 
         paginator = Paginator(lista_contatos, 5)
 

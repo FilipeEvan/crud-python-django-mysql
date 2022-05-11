@@ -23,6 +23,28 @@
                 <p>{{grupo.create_data}}</p>
             </div>
         </div>
-            
+        {% if contatos %}
+        <hr>
+
+        <div class="custom-contacts">
+            <div class="row">
+                <div class="col-auto m-0 align-items">
+                    <span><i class="fas fa-phone"></i></span>
+                </div>
+                <div class="col-auto m-0 p-0 align-items">
+                    <h3>Contatos</h3>
+                </div>
+            </div>
+
+            <ul>
+                {% for contato in contatos %}
+                <li>
+                    <span>{{contato.nome}}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
     </div>
 {% endblock %}

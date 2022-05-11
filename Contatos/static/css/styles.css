@@ -118,12 +118,26 @@ input[type='submit']:hover,
 .fas.fa-envelope, 
 .fas.fa-location-dot, 
 .fas.fa-user-group, 
-.fas.fa-calendar-days {
+.fas.fa-calendar-days,
+.fas.fa-book-user {
     color: #F6982D;
 }
 
 .fas.fa-user-group {
     font-size: 30px;
+}
+
+.custom-contacts .fas.fa-phone {
+    font-size: 30px;
+}
+
+.custom-contacts ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.custom-contacts span {
+    font-weight: normal;
 }
 
 .listar-contatos, .listar-grupos {

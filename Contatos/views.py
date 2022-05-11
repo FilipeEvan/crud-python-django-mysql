@@ -15,8 +15,8 @@ def listarContatos(request):
     if busca:
         contatos = Contato.objects.filter(nome__icontains=busca)
     else:
-        lista_contatos = Contato.objects.all().order_by('nome')
         # lista_contatos = Contato.objects.all().order_by('-create_data')
+        lista_contatos = Contato.objects.all().order_by('nome')
 
         paginator = Paginator(lista_contatos, 5)
 
@@ -92,7 +92,10 @@ def listarGrupos(request):
 
 def verGrupo(request, id):
     grupo = get_object_or_404(Grupo, pk=id)
-    return render(request, 'grupos/retrieve.html', {'grupo': grupo})
+    
+    contatos = Contato.objects.all().filter(grupo__titulo=grupo.titulo)
+
+    return render(request, 'grupos/retrieve.html', {'grupo': grupo, 'contatos': contatos})
 
 def criarGrupo(request):
     if request.method == 'POST':
